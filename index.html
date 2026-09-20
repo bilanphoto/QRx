@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Studio - เว็บสร้าง QR Code ฟรี ใช้งานได้จริง ดาวน์โหลดรูปภาพคมชัด</title>
+  <meta name="description" content="สร้าง QR Code หลากหลายรูปแบบ URL, WiFi, PromptPay, ข้อความ, นามบัตร vCard ปรับแต่งสี ใส่โลโก้ เซฟรูป PNG, JPG, SVG ได้ทันที ทำงานได้แม้ไม่มีอินเทอร์เน็ต">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <div class="brand-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            <line x1="18" y1="7" x2="18.01" y2="7"></line>
+            <line x1="7" y1="18" x2="7.01" y2="18"></line>
+            <path d="M14 18h3v3"></path>
+            <path d="M21 14v7"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">QR Studio <span style="font-size: 0.9rem; font-weight: normal; opacity: 0.85;">Pro</span></h1>
+          <p class="brand-tagline">สร้าง QR Code ฟรี ครบทุกรูปแบบ ปรับแต่งสี โลโก้ และเซฟรูปภาพได้ทันที</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="badge-offline" title="ทำงานแบบ Client-Side 100% ไม่ส่งข้อมูลออกนอกเครื่อง และใช้งานได้แม้ไม่มีอินเทอร์เน็ต">
+          <span class="badge-dot"></span>
+          <span>Offline Ready</span>
+        </div>
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="สลับโหมดมืด/สว่าง" aria-label="สลับธีม">
+          <svg id="themeIconSun" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="themeIconMoon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-grid">
+      <!-- Left Column: Controls & Configuration -->
+      <section class="controls-column">
+        <div class="glass-card">
+          <!-- Type Tabs -->
+          <div class="tabs-header-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>เลือกประเภทข้อมูล QR Code</span>
+          </div>
+
+          <nav class="tabs-nav" role="tablist">
+            <button class="tab-btn active" data-type="url" role="tab" aria-selected="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span>ลิงก์ / URL</span>
+            </button>
+            <button class="tab-btn" data-type="wifi" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+              <span>เชื่อมต่อ WiFi</span>
+            </button>
+            <button class="tab-btn" data-type="promptpay" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              <span>พร้อมเพย์</span>
+            </button>
+            <button class="tab-btn" data-type="text" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>ข้อความ</span>
+            </button>
+            <button class="tab-btn" data-type="vcard" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>นามบัตร vCard</span>
+            </button>
+            <button class="tab-btn" data-type="email" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>อีเมล</span>
+            </button>
+            <button class="tab-btn" data-type="phone" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>เบอร์โทร</span>
+            </button>
+            <button class="tab-btn" data-type="sms" role="tab" aria-selected="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <span>SMS</span>
+            </button>
+          </nav>
+
+          <!-- Input Panels -->
+          <div class="panels-container">
+            <!-- URL Panel -->
+            <div id="panel-url" class="form-panel active">
+              <div class="form-group">
+                <label class="form-label" for="urlInput">URL / ลิงก์เว็บไซต์ <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  <input type="url" id="urlInput" class="form-input" placeholder="https://www.example.com" value="https://google.com">
+                </div>
+                <div class="form-helper">ใส่ลิงก์เว็บไซต์หรือหน้าโซเชียลมีเดีย เช่น Facebook, IG, TikTok, YouTube</div>
+              </div>
+            </div>
+
+            <!-- WiFi Panel -->
+            <div id="panel-wifi" class="form-panel">
+              <div class="form-group">
+                <label class="form-label" for="wifiSsid">ชื่อ WiFi (SSID) <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                  <input type="text" id="wifiSsid" class="form-input" placeholder="เช่น MyHome_5G">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="wifiPassword">รหัสผ่าน (Password)</label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <input type="text" id="wifiPassword" class="form-input" placeholder="รหัสผ่าน WiFi">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="wifiSecurity">ระบบความปลอดภัย</label>
+                  <select id="wifiSecurity" class="form-select no-icon">
+                    <option value="WPA">WPA / WPA2 / WPA3 (มาตรฐานทั่วไป)</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">ไม่มีรหัสผ่าน (Open)</option>
+                  </select>
+                </div>
+              </div>
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="wifiHidden">
+                <span>เป็นเครือข่าย WiFi ที่ซ่อนชื่อ (Hidden Network)</span>
+              </label>
+            </div>
+
+            <!-- PromptPay Panel -->
+            <div id="panel-promptpay" class="form-panel">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="ppTarget">เบอร์มือถือ หรือ เลขบัตรประชาชน <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                    <input type="tel" id="ppTarget" class="form-input" placeholder="เช่น 0812345678 หรือ เลข 13 หลัก">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ppAmount">จำนวนเงิน (บาท) <span style="color:var(--text-muted);">(ไม่บังคับ)</span></label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <input type="number" id="ppAmount" step="0.01" min="0" class="form-input" placeholder="เช่น 150.00">
+                  </div>
+                </div>
+              </div>
+              <div class="form-helper">⚡ สร้าง QR Code ตามมาตรฐานพร้อมเพย์ EMVCo ของธนาคารแห่งประเทศไทย สามารถสแกนจ่ายผ่านแอปพลิเคชันของธนาคารได้ทันที</div>
+            </div>
+
+            <!-- Text Panel -->
+            <div id="panel-text" class="form-panel">
+              <div class="form-group">
+                <label class="form-label" for="textInput">ข้อความที่ต้องการ <span class="req">*</span></label>
+                <textarea id="textInput" class="form-textarea no-icon" placeholder="พิมพ์ข้อความ โน้ต หรือรายละเอียดที่ต้องการ"></textarea>
+                <div class="form-helper">รองรับภาษาไทย ตัวเลข และสัญลักษณ์พิเศษ</div>
+              </div>
+            </div>
+
+            <!-- vCard Panel -->
+            <div id="panel-vcard" class="form-panel">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="vcFirstName">ชื่อ <span class="req">*</span></label>
+                  <input type="text" id="vcFirstName" class="form-input no-icon" placeholder="สมชาย">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vcLastName">นามสกุล</label>
+                  <input type="text" id="vcLastName" class="form-input no-icon" placeholder="ใจดี">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="vcPhone">เบอร์โทรศัพท์ <span class="req">*</span></label>
+                  <input type="tel" id="vcPhone" class="form-input no-icon" placeholder="0812345678">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vcEmail">อีเมล</label>
+                  <input type="email" id="vcEmail" class="form-input no-icon" placeholder="somchai@example.com">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="vcOrg">บริษัท / องค์กร</label>
+                  <input type="text" id="vcOrg" class="form-input no-icon" placeholder="บริษัท ตัวอย่าง จำกัด">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="vcTitle">ตำแหน่ง</label>
+                  <input type="text" id="vcTitle" class="form-input no-icon" placeholder="ผู้จัดการทั่วไป">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vcUrl">เว็บไซต์</label>
+                <input type="url" id="vcUrl" class="form-input no-icon" placeholder="https://somchai.com">
+              </div>
+            </div>
+
+            <!-- Email Panel -->
+            <div id="panel-email" class="form-panel">
+              <div class="form-group">
+                <label class="form-label" for="emailTarget">ส่งถึง (Email) <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path></svg>
+                  <input type="email" id="emailTarget" class="form-input" placeholder="contact@example.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="emailSubject">หัวข้ออีเมล (Subject)</label>
+                <input type="text" id="emailSubject" class="form-input no-icon" placeholder="สอบถามข้อมูลเพิ่มเติม">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="emailBody">ข้อความ (Body)</label>
+                <textarea id="emailBody" class="form-textarea no-icon" placeholder="พิมพ์ข้อความที่ต้องการส่ง..."></textarea>
+              </div>
+            </div>
+
+            <!-- Phone Panel -->
+            <div id="panel-phone" class="form-panel">
+              <div class="form-group">
+                <label class="form-label" for="phoneInput">เบอร์โทรศัพท์ <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <input type="tel" id="phoneInput" class="form-input" placeholder="เช่น 0812345678">
+                </div>
+                <div class="form-helper">เมื่อสแกนแล้ว โทรศัพท์จะเปิดหน้ากดโทรออกพร้อมเบอร์นี้ทันที</div>
+              </div>
+            </div>
+
+            <!-- SMS Panel -->
+            <div id="panel-sms" class="form-panel">
+              <div class="form-group">
+                <label class="form-label" for="smsPhone">เบอร์ผู้รับ SMS <span class="req">*</span></label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <input type="tel" id="smsPhone" class="form-input" placeholder="เช่น 0812345678">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="smsMessage">ข้อความ SMS</label>
+                <textarea id="smsMessage" class="form-textarea no-icon" placeholder="ข้อความที่ต้องการส่ง..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section Divider: Appearance Customization -->
+          <div class="custom-section-divider"></div>
+
+          <div class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+            <span>ปรับแต่งดีไซน์ & สีสัน (Customization)</span>
+          </div>
+
+          <!-- Colors -->
+          <div class="color-controls-grid">
+            <div class="color-picker-box">
+              <div class="color-picker-header">
+                <span>สีโค้ด QR (Foreground)</span>
+              </div>
+              <div class="color-input-combo">
+                <input type="color" id="fgColorInput" value="#0f172a">
+                <span id="fgColorText" class="color-hex-text">#0F172A</span>
+              </div>
+            </div>
+
+            <div class="color-picker-box">
+              <div class="color-picker-header">
+                <span>สีพื้นหลัง (Background)</span>
+                <label class="form-checkbox-label" style="margin:0; font-size:0.75rem;">
+                  <input type="checkbox" id="transparentBg">
+                  <span>โปร่งใส</span>
+                </label>
+              </div>
+              <div class="color-input-combo">
+                <input type="color" id="bgColorInput" value="#ffffff">
+                <span id="bgColorText" class="color-hex-text">#FFFFFF</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Presets -->
+          <div class="presets-label">จานสียอดนิยม (Color Presets)</div>
+          <div class="palette-chips">
+            <button class="palette-chip" data-fg="#000000" data-bg="#ffffff">
+              <span class="palette-dot" style="background:#000000;"></span>
+              <span>Classic Noir</span>
+            </button>
+            <button class="palette-chip" data-fg="#4f46e5" data-bg="#ffffff">
+              <span class="palette-dot" style="background:#4f46e5;"></span>
+              <span>Indigo Modern</span>
+            </button>
+            <button class="palette-chip" data-fg="#0284c7" data-bg="#ffffff">
+              <span class="palette-dot" style="background:#0284c7;"></span>
+              <span>Cyber Cyan</span>
+            </button>
+            <button class="palette-chip" data-fg="#059669" data-bg="#ffffff">
+              <span class="palette-dot" style="background:#059669;"></span>
+              <span>Emerald Leaf</span>
+            </button>
+            <button class="palette-chip" data-fg="#e11d48" data-bg="#ffffff">
+              <span class="palette-dot" style="background:#e11d48;"></span>
+              <span>Crimson Red</span>
+            </button>
+            <button class="palette-chip" data-fg="#7c3aed" data-bg="#ffffff">
+              <span class="palette-dot" style="background:#7c3aed;"></span>
+              <span>Royal Purple</span>
+            </button>
+          </div>
+
+          <!-- Sliders: Resolution & Margin & Error Level -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>ขนาดความละเอียดภาพ (Resolution)</span>
+              <span id="sizeValText" class="slider-val">1024 × 1024 px</span>
+            </div>
+            <input type="range" id="sizeSlider" class="range-slider" min="256" max="2048" step="128" value="1024">
+          </div>
+
+          <div class="form-row">
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>ระยะขอบ (Margin)</span>
+                <span id="marginValText" class="slider-val">2</span>
+              </div>
+              <input type="range" id="marginSlider" class="range-slider" min="0" max="6" step="1" value="2">
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="ecLevelSelect">ระดับการแก้ไขข้อผิดพลาด (Error Level)</label>
+              <select id="ecLevelSelect" class="form-select no-icon">
+                <option value="M">ปานกลาง (M - 15%) - แนะนำทั่วไป</option>
+                <option value="L">ต่ำ (L - 7%) - สำหรับข้อมูลเยอะ</option>
+                <option value="Q">สูง (Q - 25%)</option>
+                <option value="H" selected>สูงสุด (H - 30%) - สำหรับใส่โลโก้</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Logo Options -->
+          <div class="custom-section-divider"></div>
+          <div class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span>ใส่โลโก้ตรงกลาง (Logo Center)</span>
+          </div>
+
+          <div class="logo-options-grid">
+            <button class="logo-option-btn active" data-logo="none" title="ไม่มีโลโก้">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+              <span>ไม่มี</span>
+            </button>
+            <button class="logo-option-btn" data-logo="link" title="ลิงก์">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              <span>Link</span>
+            </button>
+            <button class="logo-option-btn" data-logo="wifi" title="ไวไฟ">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+              <span>WiFi</span>
+            </button>
+            <button class="logo-option-btn" data-logo="promptpay" title="พร้อมเพย์">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              <span>พร้อมเพย์</span>
+            </button>
+            <button class="logo-option-btn" data-logo="star" title="ดาว">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>Star</span>
+            </button>
+            <button class="logo-option-btn" data-logo="heart" title="หัวใจ">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span>Heart</span>
+            </button>
+          </div>
+
+          <div class="custom-logo-upload-box">
+            <div class="custom-logo-info">
+              <img id="customLogoThumb" class="custom-logo-preview" alt="ตัวอย่างโลโก้">
+              <span id="customLogoName">หรืออัปโหลดรูปโลโก้ของคุณเอง</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button id="btnRemoveLogo" class="btn-remove-logo" title="ลบรูป">ลบรูป</button>
+              <label for="customLogoInput" class="upload-btn-label">เลือกรูปภาพ</label>
+              <input type="file" id="customLogoInput" accept="image/png, image/jpeg, image/svg+xml, image/webp" style="display:none;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Sticky Live Preview & Action Buttons -->
+      <section class="preview-column">
+        <div class="glass-card">
+          <div class="preview-header">
+            <span style="font-weight: 600; font-size: 0.95rem;">ตัวอย่าง QR Code</span>
+            <span class="preview-badge">✨ Real-time Preview</span>
+          </div>
+
+          <div class="qr-display-container checkered-pattern" id="qrContainer">
+            <canvas id="qrCanvas"></canvas>
+            <div class="qr-meta-info">
+              <span id="qrMetaSize">1024 × 1024 px</span>
+              <span>•</span>
+              <span id="qrMetaLevel">Level H (30%)</span>
+            </div>
+          </div>
+
+          <!-- Primary Download Button -->
+          <button id="btnDownloadPng" class="download-primary-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>ดาวน์โหลดรูปภาพ (PNG)</span>
+          </button>
+
+          <!-- Secondary Actions Grid -->
+          <div class="action-buttons-grid">
+            <button id="btnDownloadJpg" class="action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>ดาวน์โหลด JPEG</span>
+            </button>
+            <button id="btnDownloadSvg" class="action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>ดาวน์โหลด SVG</span>
+            </button>
+            <button id="btnCopyClipboard" class="action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>คัดลอกรูปภาพ</span>
+            </button>
+            <button id="btnPrintQr" class="action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span>พิมพ์ (Print)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Full Width: History -->
+    <section class="history-section">
+      <div class="glass-card">
+        <div class="history-header">
+          <div class="history-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>ประวัติการสร้างล่าสุด (Recent QR Codes)</span>
+          </div>
+          <button id="btnClearHistory" class="btn-clear-history">ล้างประวัติทั้งหมด</button>
+        </div>
+        <div class="history-grid" id="historyGrid">
+          <div class="empty-history-text">ยังไม่มีประวัติการสร้าง QR Code เมื่อคุณสร้างและดาวน์โหลด ข้อมูลจะปรากฏที่นี่</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>© 2026 QR Studio - ระบบสร้าง QR Code รองรับการทำงานแบบ Client-Side 100% ปลอดภัย ไม่ส่งข้อมูลขึ้นเซิร์ฟเวอร์</p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- JavaScript Libraries & App Engine -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/promptpay.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
